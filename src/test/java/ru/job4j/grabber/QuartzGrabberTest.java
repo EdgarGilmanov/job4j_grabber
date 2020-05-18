@@ -24,7 +24,7 @@ public class QuartzGrabberTest {
      * there will not be DOM parsing HTML. */
     static {
         STORE = new Store() {
-            List<Post> store = new ArrayList<>();
+            final List<Post> store = new ArrayList<>();
 
             @Override
             public Optional<Post> findById(String id) {

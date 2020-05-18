@@ -17,7 +17,7 @@ public class Server implements Runnable {
     private final Logger log = LoggerFactory.getLogger(Server.class);
     private final Properties cfg;
     private final Store store;
-
+    private boolean flag = true;
     public Server(Store store, Properties cfg) {
         this.store = store;
         this.cfg = cfg;
@@ -30,7 +30,7 @@ public class Server implements Runnable {
         log.info("Server start : pool - {}, port - {}.", size, port);
         ForkJoinPool fork = new ForkJoinPool(size);
         try (ServerSocket svr = new ServerSocket(port)) {
-            while (!svr.isClosed()) {
+            while (flag) {
                 Socket connect = svr.accept();
                 fork.execute(new ServerHandler(store, connect));
             }
@@ -39,5 +39,9 @@ public class Server implements Runnable {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e);
         }
+    }
+
+    public void shutdown() {
+        flag = false;
     }
 }
