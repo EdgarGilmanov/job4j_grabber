@@ -1,4 +1,4 @@
-package ru.job4j.parsers;
+package ru.job4j.parser;
 
 import org.jsoup.nodes.Document;
 import ru.job4j.model.Post;

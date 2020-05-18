@@ -1,7 +1,7 @@
 package ru.job4j.grabber;
 
 import ru.job4j.store.Store;
-import ru.job4j.parsers.Parser;
+import ru.job4j.parser.Parser;
 
 /**
  * Grab implements a scheduled repetition mechanism. In our case, we will be at regular intervals

@@ -1,6 +1,6 @@
 package ru.job4j.model;
 
-import java.util.Calendar;
+
 import java.util.Objects;
 
 /**
@@ -11,16 +11,16 @@ public class Post {
     private String name; //name of job vacancy
     private String desc; //description of job vacancy
     private String link; //link to site where this job vacancy was announced
-    private Calendar created; //date when this job vacancy was announced
+    private String created; //date when this job vacancy was announced
 
-    public Post(String name, String desc, String link, Calendar created) {
+    public Post(String name, String desc, String link, String created) {
         this.name = name;
         this.desc = desc;
         this.link = link;
         this.created = created;
     }
 
-    public Post(int id, String name, String desc, String link, Calendar created) {
+    public Post(int id, String name, String desc, String link, String created) {
         this.id = id;
         this.name = name;
         this.desc = desc;
@@ -44,7 +44,7 @@ public class Post {
         return link;
     }
 
-    public Calendar getCreated() {
+    public String getCreated() {
         return created;
     }
 
@@ -64,7 +64,7 @@ public class Post {
         this.link = link;
     }
 
-    public void setCreated(Calendar created) {
+    public void setCreated(String created) {
         this.created = created;
     }
 
