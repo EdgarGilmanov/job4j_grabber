@@ -70,7 +70,7 @@ public class QuartzGrabberTest {
             QuartzGrabber grabber = new QuartzGrabber(cfg);
             grabber.init(PARSE, STORE);
             List<Post> rsl = STORE.getAll();
-            Post test = new Post("test", "test", "test", "test");
+            Post test = new Post("Test", "Test", "Test", "Test");
             for (Post p : rsl) {
                 Assert.assertEquals(test, p);
             }
