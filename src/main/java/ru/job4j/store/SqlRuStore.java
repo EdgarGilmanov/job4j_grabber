@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The class is a tool for working with the PostgreSQL database;
+ */
 public class SqlRuStore implements Store {
     private final Logger log = Logger.getLogger(SqlRuStore.class);
     private final BasicDataSource pool;
