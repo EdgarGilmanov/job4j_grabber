@@ -22,9 +22,11 @@ public class SqlRuStore implements Store {
 
     @Override
     public Post save(Post vacancy) {
-        try (Connection cnn = pool.getConnection();
+        try (Connection cnn = pool.getConnection()) {
              PreparedStatement ps = cnn.prepareStatement(
-                "INSERT INTO post (name, description, link, created) VALUES (?, ?, ?, ?)")) {
+                     "INSERT INTO post " +
+                     "(name, description, link, created) " +
+                     "VALUES (?, ?, ?, ?)");
             ps.setString(1, vacancy.getName().trim());
             ps.setString(2, vacancy.getDesc());
             ps.setString(3, vacancy.getLink());
@@ -40,10 +42,9 @@ public class SqlRuStore implements Store {
     @Override
     public List<Post> getAll() {
         List<Post> rsl = new ArrayList<>();
-        try (Connection cnn = pool.getConnection();
-             PreparedStatement ps = cnn.prepareStatement(
-                "SELECT * FROM post");
-             ResultSet set = ps.executeQuery()) {
+        try (Connection cnn = pool.getConnection()) {
+            PreparedStatement ps = cnn.prepareStatement("SELECT * FROM post");
+            ResultSet set = ps.executeQuery();
             while (set.next()) {
                 String name = set.getString("name");
                 String desc = set.getString("description");
@@ -61,9 +62,8 @@ public class SqlRuStore implements Store {
     @Override
     public Optional<Post> findById(String id) {
         Optional<Post> opt = Optional.empty();
-        try (Connection cnn = pool.getConnection();
-             PreparedStatement ps = cnn.prepareStatement(
-                "SELECT * FROM post WHERE id = ?")) {
+        try (Connection cnn = pool.getConnection()) {
+            PreparedStatement ps = cnn.prepareStatement("SELECT * FROM post WHERE id = ?");
             ps.setInt(1, Integer.parseInt(id));
             try (ResultSet set = ps.executeQuery()) {
                 if (set.next()) {
