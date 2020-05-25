@@ -1,29 +1,38 @@
 package ru.job4j.model;
 
 
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
  * This class is a container container for storing information about a vacancy unit.
  */
+@Entity
+@Table(name = "post")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name; //name of job vacancy
-    private String desc; //description of job vacancy
+    private String description; //description of job vacancy
     private String link; //link to site where this job vacancy was announced
     private String created; //date when this job vacancy was announced
 
-    public Post(String name, String desc, String link, String created) {
+    public Post() {
+
+    }
+
+    public Post(String name, String description, String link, String created) {
         this.name = name;
-        this.desc = desc;
+        this.description = description;
         this.link = link;
         this.created = created;
     }
 
-    public Post(int id, String name, String desc, String link, String created) {
+    public Post(int id, String name, String description, String link, String created) {
         this.id = id;
         this.name = name;
-        this.desc = desc;
+        this.description = description;
         this.link = link;
         this.created = created;
     }
@@ -36,8 +45,8 @@ public class Post {
         return name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
     public String getLink() {
@@ -56,8 +65,8 @@ public class Post {
         this.name = name;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String desc) {
+        this.description = desc;
     }
 
     public void setLink(String link) {

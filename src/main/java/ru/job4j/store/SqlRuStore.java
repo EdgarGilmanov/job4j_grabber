@@ -28,7 +28,7 @@ public class SqlRuStore implements Store {
                      "(name, description, link, created) " +
                      "VALUES (?, ?, ?, ?)");
             ps.setString(1, vacancy.getName().trim());
-            ps.setString(2, vacancy.getDesc());
+            ps.setString(2, vacancy.getDescription());
             ps.setString(3, vacancy.getLink());
             ps.setString(4, vacancy.getCreated());
             ps.executeUpdate();
